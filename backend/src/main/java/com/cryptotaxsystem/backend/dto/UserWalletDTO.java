@@ -1,14 +1,17 @@
 package com.cryptotaxsystem.backend.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserWalletDTO {
-    private String walletAddress;  // 지갑 주소
+
+    private Integer userId;
+    private Integer walletId;
+    private String walletAddress;
+    private String addressNickname;
+    private LocalDateTime registeredAt;  // LocalDateTime으로 변경
 }

@@ -66,4 +66,9 @@ public class ExchangeTransaction {
 
     @Column(name = "coin_price_krw", nullable = false, precision = 20, scale = 2)
     private BigDecimal coinPriceKrw;
+
+    // WalletTransaction과의 연관 관계 추가
+    @ManyToOne
+    @JoinColumn(name = "wallet_tx_id")
+    private WalletTransaction walletTransaction;
 }

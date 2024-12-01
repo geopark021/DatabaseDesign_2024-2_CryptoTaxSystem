@@ -5,18 +5,21 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Entity
-@IdClass(UserExchangeId.class)
 @Table(name = "userexchange")
 public class UserExchange {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "userex_id")
+    private Integer userexId;
+
     @Column(name = "user_id", nullable = false)
     private Integer userId;
 
-    @Id
     @Column(name = "exchange_id", nullable = false)
     private Integer exchangeId;
 
@@ -32,11 +35,13 @@ public class UserExchange {
     @Column(name = "api_registered_at")
     private LocalDateTime apiRegisteredAt;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    private User user;
+    // userId에 대한 setter 메소드 추가
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
-    @ManyToOne
-    @JoinColumn(name = "exchange_id", insertable = false, updatable = false)
-    private Exchange exchange;
+    // exchangeId에 대한 setter 메소드 추가
+    public void setExchangeId(Integer exchangeId) {
+        this.exchangeId = exchangeId;
+    }
 }
