@@ -3,3 +3,7 @@
 
 # ide 
 .idea/
+
+# Exclude application.properties file
+backend/src/main/resources/application.properties
+

@@ -22,8 +22,8 @@ public class User {
     @Column(name = "email", nullable = false, unique = true, length = 255)
     private String email;
 
-    @Column(name = "password_hash", nullable = false, length = 255)
-    private String passwordHash;
+    @Column(name = "password_hash", nullable = false, length = 255)  // password_hash -> password로 변경
+    private String password;  // passwordHash -> password로 변경
 
     @Column(name = "nickname", nullable = false, length = 50)
     private String nickname;

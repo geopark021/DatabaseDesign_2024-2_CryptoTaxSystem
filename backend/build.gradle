@@ -48,7 +48,11 @@ dependencies {
 	// Hibernate Core 의존성
 	implementation 'org.hibernate:hibernate-core:6.1.0.Final'
 
+	// 유효성 검사
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
+	// binance
+	//implementation 'com.binance.api:binance-api-client:1.0.0'
 }
 
 tasks.named('test') {

@@ -2,18 +2,31 @@ package com.cryptotaxsystem.backend.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.security.SecurityScheme;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.tags.Tag;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SwaggerConfig {
+
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
                         .title("CryptoTaxSystem API")
                         .version("1.0.0")
-                        .description("API documentation for CryptoTaxSystem")
-                );
+                        .description("API documentation for CryptoTaxSystem"))
+                .addTagsItem(new Tag().name("User").description("Operations related to users"))
+                .addTagsItem(new Tag().name("Transaction").description("Operations related to transactions"))
+                .addTagsItem(new Tag().name("Tax").description("Operations related to tax calculations"))
+                .components(new io.swagger.v3.oas.models.Components()
+                        .addSecuritySchemes("bearerAuth", new SecurityScheme()
+                                .type(SecurityScheme.Type.HTTP)
+                                .scheme("bearer")
+                                .bearerFormat("JWT"))
+                )
+                .addSecurityItem(new SecurityRequirement().addList("bearerAuth"));
     }
 }

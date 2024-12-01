@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @IdClass(UserExchangeId.class)
-@Table(name = "UserExchange")
+@Table(name = "userexchange")
 public class UserExchange {
 
     @Id
